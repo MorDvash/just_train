@@ -8,13 +8,14 @@ class AuthScreen extends StatelessWidget {
   static const routeName = '/auth-screen';
   @override
   Widget build(BuildContext context) {
+    final title = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
         appBar: AppBar(
-          title: Text('logIn'),
+          title: Text(title),
         ),
         body: Column(
           children: [
-            AuthForm(),
+            AuthForm(title),
             DividerWithText(),
             SocialAuth(
                 title: 'Continue with Apple',

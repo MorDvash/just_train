@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
+  final String title;
+
+  AuthForm(this.title);
   @override
   _AuthFormState createState() => _AuthFormState();
 }
@@ -26,17 +29,18 @@ class _AuthFormState extends State<AuthForm> {
                 return null;
               },
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: 'Username',
+            if (widget.title == 'Sign Up')
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter Username';
+                  }
+                  return null;
+                },
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter Username';
-                }
-                return null;
-              },
-            ),
             TextFormField(
               decoration: InputDecoration(
                 labelText: 'Password',
